@@ -1,3 +1,5 @@
+package code.characters;
+
 public class PlayerCharacter extends Character
 {
     //Constructor Method

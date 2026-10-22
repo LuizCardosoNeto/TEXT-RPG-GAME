@@ -1,3 +1,5 @@
+package code.characters;
+
 public abstract class Character
 {
     private int level = 1;//Initial Level
