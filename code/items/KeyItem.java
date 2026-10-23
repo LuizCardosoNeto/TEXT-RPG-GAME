@@ -11,6 +11,6 @@ public class KeyItem extends Item
         this.ID = ID;
     }
 
-    //Common KeyItems Methods
+    //KeyItems Methods
     
 }
