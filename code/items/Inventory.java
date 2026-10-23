@@ -11,14 +11,14 @@ public class Inventory
     //Constructor Method
     public Inventory()
     {
-        ArrayList<Item> inventory = new ArrayList<Item>;
+        inventory = new ArrayList<Item>;
         int backPackSize = 5;
     }
     
     //Inventory Methods
     public void AddItem(Item item)
     {
-        if(inventory.size() <= backPackSize)
+        if(inventory.size() < backPackSize)
         {
             inventory.add(item);
         }
