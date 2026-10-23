@@ -7,7 +7,7 @@ public class Consumable extends Item
     //Constructor Method
     public Consumable(String name, int size, int durability, String typeConsumable)
     {
-        super(name, size, durability);
+        super(name, durability);
         this.typeConsumable = typeConsumable;
     }
     

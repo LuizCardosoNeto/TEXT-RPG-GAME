@@ -6,6 +6,7 @@ public class PlayerCharacter extends Character
     public PlayerCharacter(String name)
     {
         super(10, 2, 5, 4, name);
+        inventory playerInventory = new inventory;
     }
 
     //PlayerCharacter Methods
