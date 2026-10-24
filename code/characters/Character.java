@@ -36,6 +36,10 @@ public abstract class Character
             hp = 0;
         }
     }
+    public void Attack(Character target)
+    {
+        target.hp -= atk;
+    }
     public void Heal(int healing)
     {
         hp += healing;

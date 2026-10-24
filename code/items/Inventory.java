@@ -1,10 +1,11 @@
 package code.items;
 import java.util.Scanner;
-
+import code.narrative.Choice;
 public class Inventory
 {
     ArrayList<Item> inventory;
-    int backPackSize; 
+    int backPackSize;
+    Weapon EquipedWeapon; 
     //0 = Pockets(5); 1 = SmallBackPack(10);
     //2 = MediumBackPack(15); 3 = BigBackPack(20);
 
@@ -25,6 +26,11 @@ public class Inventory
         else
         {
             system.out.printLn("Não há espaço suficiente em seu inventario!")
+        }
+        if(item instanceof Weapon)
+        {
+            Choice.Yes_or_No("Deseja equipar "+item+" como sua arma principal?")
+            //Continue code
         }
     }
     public void RemoveItem(Item item)
