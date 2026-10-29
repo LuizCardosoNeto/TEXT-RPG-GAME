@@ -1,5 +1,5 @@
 package code.items;
-import java.util.Scanner;
+import java.util.*;
 import code.narrative.Choice;
 public class Inventory
 {
@@ -12,8 +12,9 @@ public class Inventory
     //Constructor Method
     public Inventory()
     {
-        inventory = new ArrayList<Item>;
-        int backPackSize = 5;
+        this.inventory = new ArrayList<>();
+        this.backPackSize = 5;
+        this.EquipedWeapon = null;
     }
     
     //Inventory Methods
@@ -25,31 +26,43 @@ public class Inventory
         }
         else
         {
-            system.out.printLn("Não há espaço suficiente em seu inventario!")
+            System.out.println("Não há espaço suficiente em seu inventario!");
         }
         if(item instanceof Weapon)
         {
-            Choice.Yes_or_No("Deseja equipar "+item+" como sua arma principal?")
-            //Continue code
+            boolean EquipWeapon = Choice.Yes_or_No("Deseja equipar "+item+" como sua arma principal?");
+            if(EquipWeapon == true)
+            {
+                EquipedWeapon = (Weapon) item;
+            }
         }
     }
     public void RemoveItem(Item item)
     {
-       system.out.printLn("Digite a posição do item que deseja remover[]:");
-       Scanner scn = new Scanner(System.in);
-       int pos = scn.nextLine();
-       if(pos <= backPackSize)
-       {
-        inventory.remove(pos);
-        system.out.printLn("Item removido!")
-       }
-       else
-       {
-        system.out.printLn("Não há itens nessa posição")
-       }
+        if(inventory.isEmpty())
+        {
+            System.out.println("Seu inventario está vazio!");
+        }
+        else
+        {
+            System.out.println("Digite a posição do item que deseja remover[]:");
+            Scanner scn = new Scanner(System.in);
+            int pos = scn.nextInt();
+            if(pos <= backPackSize)
+            {
+                inventory.remove(pos);
+                System.out.println("Item removido!");
+            }
+            else
+            {
+                System.out.println("Não há itens nessa posição");
+            }
+        }
+    
+    
     }
-    public void IncreaseSize(int backPackSize)
+    public void IncreaseSize()
     {
-        backPackSize += 5;
+        this.backPackSize += 5;
     }
 }
