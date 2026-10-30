@@ -2,17 +2,28 @@ package code.characters;
 
 public class PlayerCharacter extends Character
 {
+    private inventory playerInventory;
+
     //Constructor Method
     public PlayerCharacter(String name)
     {
-        super(10, 2, 5, 4, name);
-        inventory playerInventory = new inventory;
+        super(10, 2, 5, 4, 4, name);
+        this.playerInventory = new inventory();
     }
 
     //PlayerCharacter Methods
-    public void BaseAttack(Character target)
+    public boolean WeaponInUse()
     {
-        target.hp -= atk;
+        if(playerInventory.EquipedWeapon != null)
+        {
+           this.atk = playerInventory.EquipedWeapon.WeaponDamege;
+           return true; 
+        }
+        else
+        {
+            return false;
+        }
+        
     }
     public UseSkill(Skill skill)
     {

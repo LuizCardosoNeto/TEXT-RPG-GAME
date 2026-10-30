@@ -1,20 +1,20 @@
 package code.characters;
-
+import code.itens.*;
 public abstract class Character
 {
-    private int level = 1;//Initial Level
-    private int xp = 0;//Initial Experience
-    private int maxHp;//Health Points
-    private int hp;//Current Health Points
-    private int maxDp;//Defense Points
-    private int dp;//Current Defense Points
-    private int maxEp;//Effort Points
-    private int ep;//Current Effort Points
-    private int atk;//Attack Damege
-    private String name;//Character name
+    protected int level = 1;//Initial Level
+    protected int xp = 0;//Initial Experience
+    protected int maxHp;//Health Points
+    protected int hp;//Current Health Points
+    protected int maxDp;//Defense Points
+    protected int dp;//Current Defense Points
+    protected int maxEp;//Effort Points
+    protected int ep;//Current Effort Points
+    protected int atk;//Attack Damege
+    protected String name;//Character name
 
     //Constructor Method
-    public Character(maxHp, maxDp, maxEp, name)
+    public Character(int maxHp, int maxDp, int maxEp, int atk, String name)
     {
         //Max Character Attributes and Name set
         this.maxHp = maxHp;
@@ -23,48 +23,49 @@ public abstract class Character
         this.atk = atk;
         this.name = name;
         //Actual Atributes set
-        hp = maxHp;
-        dp = maxDp;
-        ep = maxEp;
+        this.hp = maxHp;
+        this.dp = maxDp;
+        this.ep = maxEp;
     }
     //Common Methods
     public void TakeDamage(int damage)
     {
-        hp -= damage;
-        if(hp < 0)
+        this.hp -= damage;
+        if(this.hp < 0)
         {
-            hp = 0;
+            this.hp = 0;
         }
     }
     public void Attack(Character target)
     {
-        target.hp -= atk;
+        target.TakeDamage(this.atk);
     }
     public void Heal(int healing)
     {
-        hp += healing;
-        if(hp > maxHp)
+        this.hp += healing;
+        if(this.hp > this.maxHp)
         {
-            hp = maxHp;
+            this.hp = this.maxHp;
         }
     }
     
     public void GainXp(int obtainedXp)
     {
-        xp += obtainedXp;
+        this.xp += obtainedXp;
         //Character Level System
-        while(level<10 && xp >= level * 50)
+        while(this.level<10 && xp >= this.level * 50)
         {
-            xp = level * 50;
+            this.xp = this.level * 50;
             LevelUp();
         }
     }
     public void LevelUp()
     {
-        level += 1;
-        maxHp = maxHp + level; 
-        maxDp = maxDp + 1;
-        maxEp = maxEp + 2;
+        this.level += 1;
+        this.atk += 1;
+        this.maxHp = this.maxHp + this.level; 
+        this.maxDp += 1;
+        this.maxEp += 2;
     }
 
 }
