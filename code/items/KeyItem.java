@@ -12,5 +12,11 @@ public class KeyItem extends Item
     }
 
     //KeyItems Methods
+    public void UseKeyItem(KeyItem item)
+    {
+        System.out.println("Você usou "+ item);
+        item = null;
+        //KeyItems are for single use only.
+    }
     
 }
